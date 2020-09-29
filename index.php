@@ -55,24 +55,52 @@
 			</div>
 	</div>
 
-	<div class="container-fluid" style="background-color:white;margin: 20px;margin-top: 0px">
+	<div class="container-fluid" id="candidate" style="background-color:white;margin: 20px;margin-top: 0px">
 		<div class="row">
 			<div class="col-sm-12">
 				 <p style="margin-top: 15px;"><b><h3><center>Political Parties</center></h3></b></p>
 			</div>
 		</div><br>
-		<div class="row">
+		<div class="row" >
 			<div class="col-sm-4">
-				<a href=""><img src="images/bjp.png" width="400px" height="300px"></a><br/><br/>
+				<a href=""><img src="images/bjp.png" width="410px" height="300px"></a><br/><br/>
 				<p><center><b>Bharatiya Janata Party(BJP)</b></center></p>
 			</div>
 			<div class="col-sm-4">
-				<a href=""><img src="images/cong1.jpg" width="400px" height="300px"></a><br><br>
+				<a href=""><img src="images/cong1.jpg" width="410px" height="300px"></a><br><br>
 				<p><center><b>Indian National Congress(INC)</b></center></p>
 			</div>
 			<div class="col-sm-4">
-				<a href=""><img src="images/ncp.jpg" width="400px" height="300px"></a><br><br>
+				<a href=""><img src="images/ncp.jpg" width="410px" height="300px"></a><br><br>
 				<p><center><b>Nationalist Congress Party(NCP)</b></center></p>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="container-fluid" id="Results" style="background-color:white;margin: 20px;margin-top: 0px">
+		<div class="row">
+			<div class="col-sm-12">
+				 <p style="margin-top: 15px;"><b><h3><center>Results</center></h3></b></p>
+			</div>
+		</div><br>
+		<div class="row" >
+			<div class="col-sm-4">
+				<div style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
+					<p></p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
+					
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
+					
+				</div>
 			</div>
 		</div>
 	</div>
