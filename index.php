@@ -104,6 +104,30 @@
 			</div>
 		</div>
 	</div>
+	<div class="container-fluid" id="Results" style="background-color:white;margin: 20px;margin-top: 0px">
+		<div class="row">
+			<div class="col-sm-12">
+				 <p style="margin-top: 15px;"><b><h3><center>Results</center></h3></b></p>
+			</div>
+		</div><br>
+		<div class="row" >
+			<div class="col-sm-4">
+				<div style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
+					<p></p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
+					
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
+					
+				</div>
+			</div>
+		</div>
+	</div>
 
 	
 </div>
