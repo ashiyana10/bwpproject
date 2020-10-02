@@ -64,7 +64,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				 <p style="margin-top: 15px;"><b><h3><center>Political Parties</center></h3></b></p>
-				 <p style="margin-top: 15px;"><b><h3><center>Political Parties</center></h3></b></p>
+				 
 			</div>
 		</div><br>
 		<div class="row" >
@@ -90,32 +90,7 @@
 		<div class="row" style="height:300px;width:1310px;background-image: url('images/flag2_new.jpg');background-size: cover;">
 			<h2><p style="padding: 90px">Results for the older year will be checkout here area wisw</p></h2>
 
-			<!--<div class="col-sm-12">
-				 <p style="margin-top: 15px;"><b><h3><center>Results</center></h3></b></p>
-			</div>
-		</div><br>
-		<div class="row ">
-			<div class="col-sm-4">
-				<div class= "re1" style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
-					<span class="capsan">
-                		<span><b>2020-2021</b></span>
-         			</span>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class= "re1" style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
-					<span class="capsan">
-                		<span><b>2019-2020</b></span>
-         			</span>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class= "re1" style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
-					<span class="capsan">
-                		<span><b>2018-2019</b></span>
-         			</span>
-				</div>
-			</div>-->
+			
 		</div>
 	</div>
 
