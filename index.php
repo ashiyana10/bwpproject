@@ -11,11 +11,6 @@
  	body{
  		color: black;
  	}
- .re1	 .capsan:after {border:solid 2px #000; top:30px; left:40px; bottom:30px; right:30px; content:""; position:absolute;}
-  .re1 .capsan {position:absolute; top:0px; left:0px; width:100%; text-align:center; height:100%; -moz-transform:scale(0);-ms-transform:scale(0);-o-transform:scale(0);-webkit-transform:scale(0); transform:scale(0); -moz-transition:opacity 0.35s ease 0s, transform 0.35s ease 0s; -ms-transition:opacity 0.35s ease 0s, transform 0.35s ease 0s;-o-transition:opacity 0.35s ease 0s, transform 0.35s ease 0s;-webkit-transition:opacity 0.35s ease 0s, transform 0.35s ease 0s;transition:opacity 0.35s ease 0s, transform 0.35s ease 0s; opacity:0;}
- .re1:hover .capsan {-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);-webkit-transform:scale(1); transform:scale(1); opacity:1;}
- .re1:hover img {opacity:0.7;}
-  .re1 .capsan span {position:absolute; top:50%; left:0px; width:100%; text-align:center; line-height:30px; font-size:20px; color:#000000; margin-top:-15px;}
  </style>
 </head>
 
@@ -62,23 +57,25 @@
 
 	<div class="container-fluid" id="candidate" style="background-color:white;margin: 20px;margin-top: 0px">
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-10">
 				 <p style="margin-top: 15px;"><b><h3><center>Political Parties</center></h3></b></p>
-				 
+			</div>
+			<div class="col-sm-2">
+				<button class="btn btn-success" style="margin-top: 15px;">Show All</button>
 			</div>
 		</div><br>
 		<div class="row" >
 			<div class="col-sm-4">
-				<a href=""><img src="images/bjp.png" width="410px" height="300px"></a><br/><br/>
+				<a href="candidat.php"><img src="images/bjp.png" width="410px" height="300px"></a><br/><br/>
 				<p><center><b>Bharatiya Janata Party(BJP)</b></center></p>
 			</div>
 			<div class="col-sm-4">
-				<a href=""><img src="images/cong1.jpg" width="410px" height="300px"></a><br><br>
+				<a href="candidat.php"><img src="images/cong1.jpg" width="410px" height="300px"></a><br><br>
 				<p><center><b>Indian National Congress(INC)</b></center></p>
 			</div>
 			<div class="col-sm-4">
-				<a href=""><img src="images/ncp.jpg" width="410px" height="300px"></a><br><br>
-				<p><center><b>Nationalist Congress Party(NCP)</b></center></p>
+				<a href="candidat.php"><img src="images/ncp.jpg" width="410px" height="300px"></a><br><br>
+					<p><center><b>Nationalist Congress Party(NCP)</b></center></p>
 			</div>
 		</div>
 	</div>
@@ -88,10 +85,10 @@
 
 	<div class="container-fluid result" id="Results" style="background-color:white;margin: 20px;margin-top: 0px">
 		<div class="row" style="height:300px;width:1310px;background-image: url('images/flag2_new.jpg');background-size: cover;">
-			<h2><p style="padding: 90px">Results for the older year will be checkout here area wisw</p></h2>
+			<h2><p style="padding: 90px">Results for the older year will be checkout here area wise</p></h2>
 
-			
-		</div>
+		</div>	
+		
 	</div>
 
 	
