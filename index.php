@@ -64,7 +64,7 @@
 				<button class="btn btn-success" style="margin-top: 15px;">Show All</button>
 			</div>
 		</div><br>
-		<div class="row" >
+		<div class="row">
 			<div class="col-sm-4">
 				<a href="candidat.php"><img src="images/bjp.png" width="410px" height="300px"></a><br/><br/>
 				<p><center><b>Bharatiya Janata Party(BJP)</b></center></p>
@@ -74,7 +74,7 @@
 				<p><center><b>Indian National Congress(INC)</b></center></p>
 			</div>
 			<div class="col-sm-4">
-				<a href="candidat.php"><img src="images/ncp.jpg" width="410px" height="300px"></a><br><br>
+					<a href="candidat.php"><img src="images/ncp.jpg" width="410px" height="300px"></a><br><br>
 					<p><center><b>Nationalist Congress Party(NCP)</b></center></p>
 			</div>
 		</div>
@@ -85,7 +85,9 @@
 
 	<div class="container-fluid result" id="Results" style="background-color:white;margin: 20px;margin-top: 0px">
 		<div class="row" style="height:300px;width:1310px;background-image: url('images/flag2_new.jpg');background-size: cover;">
-			<h2><p style="padding: 90px">Results for the older year will be checkout here area wise</p></h2>
+			<div class="col-sm-12">
+				<h2><p style="padding: 90px">Results for the older year will be checkout here area wise</p></h2>
+			</div>
 
 		</div>	
 		

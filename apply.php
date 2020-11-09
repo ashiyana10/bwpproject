@@ -15,6 +15,7 @@
 
 </head>
 <body background="images\fort.jpg" style="background-repeat: no-repeat;background-size: cover;background-attachment: fixed;">
+	<?php include "header.html"; ?>
 <div class="container"><br><br>
 	<div class="jumbotron opacity1">
 		<center> <h3>Apply For Voter Or Candidate</center><br><br>
