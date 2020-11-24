@@ -30,11 +30,11 @@
  				</ol>
  				<!-- Wrapper for slides -->
  				<div class="carousel-inner" >
- 					<div class="item active" style="background-image: url('images/pm_ashu.png');">
+ 					<div class="item active" style="background-image: url('images/pm_pics.png');">
  	 					<?php include 'header.html'; ?>
  	 					<p style="padding: 200px;font-size: 30px" >Election 2020-2021</p>
  					</div>
- 					<div class="item" style="background-image: url('images/cm_new.jpg');">
+ 					<div class="item" style="background-image: url('images/cm_pics.png');">
 		 				<?php include 'header.html'; ?> 
 		  				<p style="padding: 200px;font-size: 30px" >Election 2020-2021</p>
  					</div>
@@ -57,22 +57,25 @@
 
 	<div class="container-fluid" id="candidate" style="background-color:white;margin: 20px;margin-top: 0px">
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-10">
 				 <p style="margin-top: 15px;"><b><h3><center>Political Parties</center></h3></b></p>
 			</div>
+			<div class="col-sm-2">
+				<button class="btn btn-success" style="margin-top: 15px;">Show All</button>
+			</div>
 		</div><br>
-		<div class="row" >
+		<div class="row">
 			<div class="col-sm-4">
-				<a href=""><img src="images/bjp.png" width="410px" height="300px"></a><br/><br/>
+				<a href="candidat.php"><img src="images/bjp.png" width="410px" height="300px"></a><br/><br/>
 				<p><center><b>Bharatiya Janata Party(BJP)</b></center></p>
 			</div>
 			<div class="col-sm-4">
-				<a href=""><img src="images/cong1.jpg" width="410px" height="300px"></a><br><br>
+				<a href="candidat.php"><img src="images/cong1.jpg" width="410px" height="300px"></a><br><br>
 				<p><center><b>Indian National Congress(INC)</b></center></p>
 			</div>
 			<div class="col-sm-4">
-				<a href=""><img src="images/ncp.jpg" width="410px" height="300px"></a><br><br>
-				<p><center><b>Nationalist Congress Party(NCP)</b></center></p>
+					<a href="candidat.php"><img src="images/ncp.jpg" width="410px" height="300px"></a><br><br>
+					<p><center><b>Nationalist Congress Party(NCP)</b></center></p>
 			</div>
 		</div>
 	</div>
@@ -80,29 +83,14 @@
 
 
 
-	<div class="container-fluid" id="Results" style="background-color:white;margin: 20px;margin-top: 0px">
-		<div class="row">
+	<div class="container-fluid result" id="Results" style="background-color:white;margin: 20px;margin-top: 0px">
+		<div class="row" style="height:300px;width:1310px;background-image: url('images/flag2_new.jpg');background-size: cover;">
 			<div class="col-sm-12">
-				 <p style="margin-top: 15px;"><b><h3><center>Resultshhdhdgdgg</center></h3></b></p>
+				<h2><p style="padding: 90px">Results for the older year will be checkout here area wise</p></h2>
 			</div>
-		</div><br>
-		<div class="row" >
-			<div class="col-sm-4">
-				<div style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
-					<p></p>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
-					
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div style="height:300px;width: 410px;background-image: url('images/flag.jpg');background-size: cover;">
-					
-				</div>
-			</div>
-		</div>
+
+		</div>	
+		
 	</div>
 
 	
