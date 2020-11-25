@@ -22,7 +22,7 @@
 			
 	
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
- 			<!-- Indicators -->
+ 			
 	 			<ol class="carousel-indicators">
  					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
  					<li data-target="#myCarousel" data-slide-to="1"></li>
@@ -53,12 +53,41 @@
  						<span class="sr-only">Next</span>
  					</a>
 			</div>
-	</div>
+	</div><br><br>
+
+
+	<div class="container-fluid" >
+		<center><p><h2><b>About Us</b></h2></p></center><br><br>
+		<div class="row" style="background-image: url(images/bg5.jpg);background-repeat: no-repeat;background-size: cover;">
+			<div class="col-sm-12">
+				<p></p>
+				<p style="margin: 100px;font-size: 20px">Online voting is a way of casting a vote or opinion online, via electronic means. It is a preferred voting channel for many organisations running board, council or committee elections, referendums, polls or AGMs, due to its ease and flexibility. With voter encryption and different levels of voter security, our online voting system offers the most secure system on the market. In addition, our online voting system can be branded with a client’s logo, colour scheme and imagery to make it recognisable and appealing to the voter.<br>
+					We also offer different voting methods as part of our online voting package. <br>Voting methods include the Single Transferable Vote (STV), First Past the Post (FPTP), and AGM Voting.<br><br>
+				<button class="btn btn-warning" style="border-radius: 50px;background-color: #2B3856;" align="right"><b style="font-size: 20px">&nbsp;&nbsp;&nbsp;Learn More&nbsp;&nbsp;&nbsp;</b></button>
+			</p>
+
+			</div>
+		</div>
+	</div><br><br>
+
+
+
+
+
+
+
 
 	<div class="container-fluid" id="candidate" style="background-color:white;margin: 20px;margin-top: 0px">
 		<div class="row">
 			<div class="col-sm-10">
+<<<<<<< HEAD
 				 <p style="margin-top: 15px;"><b><h3><center>Political Parties</center></h3></b></p>
+=======
+				 <center><p style="margin-top: 15px;"><b><h3 style="margin-left: 200px">Political Parties</h3></b></p></center>
+			</div>
+			<div class="col-sm-2">
+				<button class="btn btn-success" style="margin-top: 15px;background-color:#2B3856">&nbsp;&nbsp;<b style="font-size: 18px">Show All</b>&nbsp;&nbsp;</button>
+>>>>>>> 21e119b84ea7828e587ca164790f9c264292d498
 			</div>
 			<div class="col-sm-2">
 				<button class="btn btn-success" style="margin-top: 15px;">Show All</button>
@@ -77,7 +106,7 @@
 					<a href="candidat.php"><img src="images/ncp.jpg" width="410px" height="300px"></a><br><br>
 					<p><center><b>Nationalist Congress Party(NCP)</b></center></p>
 			</div>
-		</div>
+		</div><br>
 	</div>
 
 
@@ -90,8 +119,12 @@
 			</div>
 
 		</div>	
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 21e119b84ea7828e587ca164790f9c264292d498
 	</div>
+
 
 	
 </div>
