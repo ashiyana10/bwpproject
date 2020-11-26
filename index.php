@@ -99,10 +99,17 @@ function stoptimer()
 	<div class="container-fluid" id="candidate" style="background-color:white;margin: 20px;margin-top: 0px">
 		<div class="row">
 			<div class="col-sm-10">
+<<<<<<< HEAD
+				 <p style="margin-top: 15px;"><b><h3><center>Political Parties</center></h3></b></p>
+=======
 				 <center><p style="margin-top: 15px;"><b><h3 style="margin-left: 200px">Political Parties</h3></b></p></center>
 			</div>
 			<div class="col-sm-2">
 				<button class="btn btn-success" style="margin-top: 15px;background-color:#2B3856">&nbsp;&nbsp;<b style="font-size: 18px">Show All</b>&nbsp;&nbsp;</button>
+>>>>>>> 21e119b84ea7828e587ca164790f9c264292d498
+			</div>
+			<div class="col-sm-2">
+				<button class="btn btn-success" style="margin-top: 15px;">Show All</button>
 			</div>
 		</div><br>
 		<div class="row">
@@ -131,6 +138,10 @@ function stoptimer()
 			</div>
 
 		</div>	
+<<<<<<< HEAD
+		
+=======
+>>>>>>> 21e119b84ea7828e587ca164790f9c264292d498
 	</div>
 
 
