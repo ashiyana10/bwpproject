@@ -1,7 +1,14 @@
+<?php
+
+use Phppot\StateCity;
+require_once __DIR__ . '/combobox/CountryState.php';
+$countryState = new StateCity();
+$countryResult = $countryState->getAllState();
+?> 
 <!DOCTYPE html>  
 <html lang="en">  
   <head>  
-     <title>Job</title>  
+     <title>Candidate Detail</title>  
      <link rel="stylesheet" type="text/css" href="index.css">
      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> 
@@ -16,9 +23,26 @@
 
       }
      </style>
+     <script src="./combobox/jquery-3.2.1.min.js" type="text/javascript"></script>
+     <script>
+function getCity(val) {
+    $("#loader").show();
+  $.ajax({
+  type: "POST",
+  url: "./combobox/get-country-state-ep.php",
+  data:'state_id='+val,
+  success: function(data){
+    $("#state-list").html(data);
+    $("#loader").hide();
+  }
+  });
+}
+</script>
   </head>  
-  <body>  
-    <?php include "header.html"; ?>
+  <body> 
+  
+    <?php include "header.html"; 
+    include "connect.php"; ?>
   <div class="container">
 
     <p><b><center><h3>Select Particular Candidate</h3></center></b></p>
@@ -31,30 +55,33 @@
           <label>Select Parties</label>
           <select name="cars" id="cars" class="form-control" style="width: 100%">
             <option value="select" hidden>Select</option>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
-          </select>
+            <?php 
+            $ans=$conn->prepare("select * from Parties");
+                    $ans->execute();
+                    for($i=0;$i<$ans->rowCount();$i++)
+                    {
+                        $row=$ans->fetch();
+                ?>
+            <option value="<?php echo $row[1]; ?>"><?php echo $row[1]; ?></option><?php } ?>
+            </select>
         </div>
         <div class="col-sm-4">
           <label>Select States</label>
-          <select name="cars" id="cars" class="form-control" style="width: 100%">
+          <select name="cars" id="cars" class="form-control" style="width: 100%" onChange="getCity(this.value);">
             <option value="select" hidden>Select</option>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
-          </select>
+            <?php
+            foreach ($countryResult as $country) {
+            ?>    
+            <option value="<?php echo $country["id"]; ?>"><?php echo $country["state_name"]; ?></option>
+            <?php
+            }
+            ?></select>
         </div>
         <div class="col-sm-4">
           <label>Select Cityes</label>
-          <select name="cars" id="cars" class="form-control" style="width: 100%">
+          <select name="cars" id="state-list" class="form-control" style="width: 100%">
             <option value="select" hidden>Select</option>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
+           
           </select>
         </div>
     </form>

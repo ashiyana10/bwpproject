@@ -12,9 +12,28 @@
  		color: black;
  	}
  </style>
+ <script type="text/javascript">
+msg="Hello world......";
+pos=0;
+maxlength=msg.length+1;
+function writemsg()
+{
+	if(pos<maxlength)
+	{
+	txt=msg.substring(pos,0);
+	document.forms[0].msgtxt.value=txt;
+	pos++;
+	timer=setTimeout("writemsg()",400);
+	}
+}
+function stoptimer()
+{
+	clearTimeout(timer);
+}
+</script>
 </head>
 
-<body>
+<body onload="writemsg()" onunload="stoptimer()">
 
 <div class="main" style="background-color:#E5E4E2">
 
@@ -32,11 +51,11 @@
  				<div class="carousel-inner" >
  					<div class="item active" style="background-image: url('images/pm_pics.png');">
  	 					<?php include 'header.html'; ?>
- 	 					<p style="padding: 200px;font-size: 30px" >Election 2020-2021</p>
+ 	 					<p style="padding: 200px;font-size: 30px;color: blue" ><b>Voting For the 2020-21 link available here....</b></p>
  					</div>
- 					<div class="item" style="background-image: url('images/cm_pics.png');">
+ 					<div class="item" style="background-image: url('images/pm_pics.png');">
 		 				<?php include 'header.html'; ?> 
-		  				<p style="padding: 200px;font-size: 30px" >Election 2020-2021</p>
+		  				<p style="padding: 200px;font-size: 30px;color: green"><b>Show the Results of the current year after<br> the election 5 hour...</b></p>
  					</div>
  					<div class="item" style="background-image: url('images/pm2.jpg');background-repeat: no-repeat;">
  		 				<?php include 'header.html'; ?>

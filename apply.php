@@ -19,26 +19,21 @@
 <div class="container"><br><br>
 	<div class="jumbotron opacity1">
 		<center> <h3>Apply For Voter Or Candidate</center><br><br>
-		<form class="form-inline" role="form" >
+		<form class="form-inline" role="form" action="voter.php" method="GET" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-sm-4">
-					<input type="text" name="surnm" class="form-control" placeholder="Surname" style="width: 100%">
+					<input type="text" name="sur_nm" class="form-control" placeholder="Surname" style="width: 100%">
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="mnm" class="form-control" placeholder="Middle Name" style="width: 100%">
+					<input type="text" name="m_nm" class="form-control" placeholder="Middle Name" style="width: 100%">
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="lnm" class="form-control" placeholder="Last Name" style="width: 100%">
+					<input type="text" name="l_nm" class="form-control" placeholder="Last Name" style="width: 100%">
 				</div>
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="text" name="fnm" class="form-control" placeholder="Father Full Name" style="width: 100%">
-				</div>
-			</div><br>
-			<div class="row">
-				<div class="col-sm-12">
-					<input type="tel" name="email" class="form-control" placeholder="Contact No" style="width: 100%">
+					<input type="tel" name="tel" class="form-control" placeholder="Contact No" style="width: 100%">
 				</div>
 			</div><br>
 			<div class="row">
@@ -52,27 +47,46 @@
 					<input type="date" name="date" class="form-control" placeholder="E-mail" style="width: 100%">
 				</div>
 			</div><br>
+			Gender:<br>
+			<div class="row">
+				<div class="col-sm-2">
+					<input type="radio" name="gender" value="male" class="form-control">&nbsp;&nbsp;Male
+				</div>
+				<div class="col-sm-2">
+					<input type="radio" name="gender" value="female" class="form-control">&nbsp;&nbsp;Female
+				</div>
+			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<textarea  rows="3" style="width: 100%" class="form-control" placeholder="Current Address">
+					<textarea  rows="3" style="width: 100%" name="address" class="form-control" placeholder="Current Address">
 						
 					</textarea>
 				</div>
 			</div><br>
-			Gender:<br>
 			<div class="row">
-				<div class="col-sm-2">
-					<input type="radio" name="Gender" value="male" class="form-control">&nbsp;&nbsp;Male
+				<div class="col-sm-12">
+					<input type="text" name="pincode" class="form-control" placeholder="Pin Code" style="width: 100%">
 				</div>
-				<div class="col-sm-2">
-					<input type="radio" name="Gender" value="female" class="form-control">&nbsp;&nbsp;Female
+			</div><br>
+			
+			Current State:<br>
+			<div class="row">
+				<div class="col-sm-12">
+					<select class="form-control" name="state" style="width: 100%">
+						<option hidden="">State</option>
+						<option>Jamnagar</option>
+						<option>Rajkot</option>
+						<option>Ahemdabad</option>
+						<option>Vadodra</option>
+						<option>Surat</option>
+					</select>
 				</div>
 			</div><br>
 			Current City:<br>
 			<div class="row">
 				<div class="col-sm-12">
-					<select class="form-control" style="width: 100%">
-						<option>City</option>
+					<select class="form-control" name="city" style="width: 100%">
+						<option hidden="">City</option>
 						<option>Jamnagar</option>
 						<option>Rajkot</option>
 						<option>Ahemdabad</option>
@@ -89,9 +103,23 @@
 					</select>
 				</div>
 			</div><br>
+			Upload Adhar Card:<br>
+			Front Page:
+			<div class="row">
+				<div class="col-sm-12">	
+					<input type="file" name="file1" class="form-control" style="width: 100%">
+				</div>
+			</div><br>
+			Back Page:
+			<div class="row">
+				<div class="col-sm-12">
+					<input type="file" name="file2" class="form-control" style="width: 100%">
+				</div>
+			</div><br>
+			
 			<div class="row">
 				<div class="col-sm-4">
-					<button type="button" class="btn btn-primary form-control" style="width: 100%">Submit</button>
+					<input type="Submit" class="btn btn-primary form-control" style="width: 100%" name="submit" value="Submit">
 				</div>
 				<div class="col-sm-4">
 					<button type="button" class="btn btn-default form-control" style="width: 100%">Clear</button>
