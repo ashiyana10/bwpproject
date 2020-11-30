@@ -32,7 +32,7 @@ function getCity(val) {
   url: "./combobox/get-country-state-ep.php",
   data:'state_id='+val,
   success: function(data){
-    $("#state-list").html(data);
+    $("#state_list").html(data);
     $("#loader").hide();
   }
   });
@@ -41,7 +41,7 @@ function getCity(val) {
   </head>  
   <body> 
   
-    <?php include "header.html"; 
+    <?php include "header.php"; 
     include "connect.php"; ?>
   <div class="container">
 
@@ -53,7 +53,7 @@ function getCity(val) {
       <div class="row">
         <div class="col-sm-4">
           <label>Select Parties</label>
-          <select name="cars" id="cars" class="form-control" style="width: 100%">
+          <select name="party" id="party" class="form-control" style="width: 100%" >
             <option value="select" hidden>Select</option>
             <?php 
             $ans=$conn->prepare("select * from Parties");
@@ -67,7 +67,7 @@ function getCity(val) {
         </div>
         <div class="col-sm-4">
           <label>Select States</label>
-          <select name="cars" id="cars" class="form-control" style="width: 100%" onChange="getCity(this.value);">
+          <select id="state" class="form-control" style="width: 100%" onChange="getCity(this.value);" >
             <option value="select" hidden>Select</option>
             <?php
             foreach ($countryResult as $country) {
@@ -79,27 +79,58 @@ function getCity(val) {
         </div>
         <div class="col-sm-4">
           <label>Select Cityes</label>
-          <select name="cars" id="state-list" class="form-control" style="width: 100%">
+          <select id="state_list" class="form-control city" style="width: 100%">
             <option value="select" hidden>Select</option>
            
           </select>
         </div>
+      </div><br>
+        
     </form>
+    <div class="row">
+          <div class="col-sm-4">
+            <button class="form-control" id="load-button" onclick="data()">&nbsp;Search</button>
+          </div>
+        </div>
   </div><br>
+  
 
-<div class="containe">  
+<div class="container">  
   <h4><b>Choose Area</b></h4>  <br>
   
-<table class="table table-hover" style="border-color: black">  
-  <tr><th>Area Code</th><th>Area Name</th><th>Age</th></tr>  
-  <tr><td><a href="can_detail.php">101</a></td><td>Rahul</td><td>23</td></tr>  
-  <tr><td>102</td><td>Umesh</td><td>22</td></tr>  
-  <tr><td>103</td><td>Max</td><td>29</td></tr>  
-  <tr><td>104</td><td>Ajeet</td><td>21</td></tr>  
+<table class="table  table-bordered text-center" style="border-color: black" >  
+    <thead>
+      
+    </thead>
+    <tbody id="response">
+      
+    </tbody>
 </table>  
   
 </div>  
-  
+ 
+  </script>
+  <script type="text/javascript">
+   function data(){
+     var state = document.getElementById('state').value;
+     var city = document.getElementById('state_list').value;
+     var party = document.getElementById('party').value;
+       
+      $.ajax({
+        url:"candidate_search.php",
+        type:"POST",
+
+        //data:{state:'state',city:'state_list'},
+        data:{state:state,city:city,party:party},
+        success:function(response){
+          $("#response").html(response);
+        }
+
+      });
+    
+    }
+  </script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
   </body>  

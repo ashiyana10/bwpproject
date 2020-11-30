@@ -15,7 +15,7 @@
 
 </head>
 <body background="images\fort.jpg" style="background-repeat: no-repeat;background-size: cover;background-attachment: fixed;">
-	<?php include "header.html"; ?>
+	<?php include "header.php"; ?>
 <div class="container"><br><br>
 	<div class="jumbotron opacity1">
 		<center> <h3>Apply For Voter Or Candidate</center><br><br>
@@ -107,19 +107,19 @@
 			Front Page:
 			<div class="row">
 				<div class="col-sm-12">	
-					<input type="file" name="file1" class="form-control" style="width: 100%">
+					<input type="file" name="file1" class="form-control" style="width: 100%" data-validation="required" data-validation-error-msg="Please Choose File">
 				</div>
 			</div><br>
 			Back Page:
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="file" name="file2" class="form-control" style="width: 100%">
+					<input type="file" name="file2" class="form-control" style="width: 100%" data-validation="required" data-validation-error-msg="Please Choose File">
 				</div>
 			</div><br>
 			
 			<div class="row">
 				<div class="col-sm-4">
-					<input type="Submit" class="btn btn-primary form-control" style="width: 100%" name="submit" value="Submit">
+					<input type="submit" class="btn btn-primary form-control" style="width: 100%" name="submit" value="Submit">
 				</div>
 				<div class="col-sm-4">
 					<button type="button" class="btn btn-default form-control" style="width: 100%">Clear</button>

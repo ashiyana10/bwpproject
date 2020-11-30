@@ -16,6 +16,19 @@
 </head>
 <body>
 <?php include "header.html"; ?>
+<?php
+					 $aid=$_REQUEST['aid'];
+					 $pid=$_REQUEST['pid'];
+					 
+                    include 'connect.php';
+                    $ans=$conn->prepare("select * from candidate where area_id=:aid AND party_id=:pid");
+                    $ans->bindParam(':aid',$aid);
+                    $ans->bindParam(':pid',$pid);
+                    $ans->execute();
+                    for($i=0;$i<$ans->rowCount();$i++)
+                    {
+                        $row=$ans->fetch();
+                ?>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
@@ -23,44 +36,43 @@
 		</div>
 	</div><br>
 	<div class="row">
+		
 		<div class="col-sm-9">
 			<br>
-			<h4><p>Name : Hakubha Jadeja</p>
-			<p>Age  : 56</p>
-			<p>Join Party Year : 10</p>
-			<p>Other Business : Marketing</p></h4><br>
+			<h4><p>Name : <?php echo $row['name']; ?></p>
+			<p>Age  : <?php echo $row['age']; ?></p>
+			<p>Join Party Year : <?php echo $row['join_party_year']; ?></p>
+			<p>Other Business : <?php echo $row['other_business']; ?></p></h4><br>
 			<div class="row">
 				<div class="col-sm-5">
 					<h4><p><b><center>Personal Detail</center></b></p><br>
-					<p>Contact No : 0040512150</p>
-					<p>Email-Id : hakubha001@gmail.com</p>
-					<p>Address : Khodiyar Colony,jamnagar</p></h4>
+					<p>Contact No : <?php echo $row['contact_no']; ?></p>
+					<p>Email-Id : <?php echo $row['email']; ?></p>
+					<p>Address : <?php echo $row['address']; ?></p></h4>
 				</div>
 				<div class="col-sm-1">
 					<div class="vl" style="margin-left: 0px;margin-top: 40px"></div>
 				</div>
 				<div class="col-sm-6" >
 					<h4><p><b><center>Education Detail</center></b></p><br>
-					<p>Mr. Hakubha Jadeja has Completed his Basic Education of Class 12th from a Small School in his Village only. And then he has done his Bachelor of Arts from Dharmendrasinhji Arts College and LLB from Saurashtra University.	</p></h4>
+					<p><?php echo $row['education_detail']; ?>	</p></h4>
 				</div>
 			
 			</div>	
 		</div>
 		<div class="col-sm-3">
-			<img src="images/can1.jpg">
+			<img src="<?php echo $row['img']; ?>">
 		</div>
 	</div><br><br>
 	<div class="row">
 		<div class="col-sm-12">
 			<h4><p><b><center>Position in Politics (Past & Present)</center></b></p><br>
-				<p>Mr. Vijay Rupani has started his Political career in 1971 with Joining Rashtriya Swayamsevak Sangh and also meet to Jana Sangh. Then he has been shifted with Bhartiya Janata Party and he is the only Minister in Gujarat Cabinet who has been arrested in the Emergency Era.</p>
-
-				<p>He has served as the party’s corporator in Rajkot. He has also served as the mayor and a member of Rajya Sabha.</p>
-
-				<p>And now, Vijay Rupani becomes the Member of Legislative Assembly of Gujarat in 2016 as well as the Chief Minister of Gujarat.</p>
+				<p><?php echo $row['position']; ?></p>
 		</div>
 
 	</div>
 </div>
+<?php
+}?>
 </body>
 </html>

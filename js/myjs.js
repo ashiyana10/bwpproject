@@ -1,0 +1,13 @@
+$(document).ready(function(){
+    $('#hide').click(function(){
+        $('#loginModal').modal('hide');
+    })
+});
+$(document).ready(function(){
+    document.getElementById("pop1").click();
+});
+$(document).ready(function(){
+    $('#hide1').click(function(){
+        $('#forgotModal').modal('hide1');
+    })
+}); 

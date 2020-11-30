@@ -4,9 +4,7 @@ include 'connect.php';
 if(isset($_GET['submit']))
 {
 try{
-	$img1 = $_FILES['file1']['tmp_name'];
-	$img2 = $_FILES['file2']['tmp_name'];
-
+	
 	$sur_nm=$_GET['sur_nm'];
 	$m_nm=$_GET['m_nm'];
 	$l_nm=$_GET['l_nm'];
@@ -18,6 +16,9 @@ try{
 	$pincode=$_GET['pincode'];
 	$state=$_GET['state'];
 	$city=$_GET['city'];
+	$img1 = $_FILES['file1']['name'];
+	$img2 = $_FILES['file2']['name'];
+
 	
 		$path1=move_uploaded_file($_FILES['img1']['tmp_name'],"upload/".$img1);
 		$path2=move_uploaded_file($_FILES['img2']['tmp_name'],"upload/".$img2);

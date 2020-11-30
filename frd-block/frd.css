@@ -1,0 +1,31 @@
+
+.friends-block {display:block; width:100%; background:url(../images/parallax-img/friend-infoBg.jpg) no-repeat 50% 50%; background-size:cover; padding:33px 0 63px 0; background-attachment:fixed; position:relative;}
+.friends-block:after {position:absolute; top:0px; left:0px; width:100%; height:100%; background:rgba(241,91,34,0.9); content:""; }
+.friends-block .container {position:relative; z-index:5;}
+.friends-block .sub-title h2 {color:#fff; }
+
+.friends-block .friends-info{display:block; padding:0 0 0 315px; position:relative; margin:21px 0 0 0; min-height:315px; }
+.friends-block .friends-info .friend-img {position:absolute; top:0px; left:0px; margin:0 0 0 0;}
+.friends-block .friends-info .img { width:278px;  padding:55px 50px 55px 50px; overflow:hidden;}
+.friends-block .friends-info .img img {border-radius:50%; width:178px; height:178px}
+.friends-block .friends-info .img-fream {position:absolute; top:0px; left:0px; }
+.friends-block .friends-info .name {text-align:center; padding:5px 0 0 0; line-height:26px; font-size:18px; color:#ffffff; font-family: 'Domine'; }
+.friends-block .friends-info .text {padding:68px 0 0 0; }
+.friends-block .friends-info .text p {line-height:42px;font-size:20px; color:#fff; margin:0px; font-family: 'Domine'; text-align:center;}
+.friends-block .friends-info .text .start-img {padding:0 10px 0 0; width:auto; display: inline-block;}
+.friends-block .friends-info .text .end-img {padding:0 0 0 10px; width:auto; display: inline-block;}
+
+.friends-block .friends-info .text p {font-size:18px; line-height:32px;}
+
+.friends-block .friends-info {padding:0px;}
+.friends-block .friends-info .friend-img {position:static; width:100%; margin:0px; text-align:center; }
+.friends-block .friends-info .img {display:inline-block;}
+.friends-block .friends-info .img-fream {width:100%; text-align:center;}
+.friends-block .friends-info .img-fream img {display:inline-block; width:auto;}
+
+
+.friends-block .friends-info .name {padding-top:11px;}
+.friends-block .friends-info .text {padding-top:30px; }
+
+
+
