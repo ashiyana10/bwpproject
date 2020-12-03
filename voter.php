@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
 <?php
 
 include 'connect.php';
@@ -43,12 +50,17 @@ try{
 
 	$ins->execute();
 
-	include 'index.php';
+	//include 'index.php';
 
 }
 catch(PDOException $e)
 	{
 		    echo $e->getMessage();
    }
+
   }
 ?>
+
+
+</body>
+</html>

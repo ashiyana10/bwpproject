@@ -25,7 +25,7 @@
 						<a href="candidat.php" style="color: black"><b>Candidate</b></a>
 					</div>
 					<div class="col-md-1">
-						<a href="#Results" style="color: black"><b>Result</b>&nbsp;<b class="fas fa-angle-down"></b></a>
+						<a href="result.php" style="color: black"><b>Result</b>&nbsp;<b class="fas fa-angle-down"></b></a>
 					</div>
 					<div class="col-md-1">
 						

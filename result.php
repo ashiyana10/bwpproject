@@ -16,7 +16,7 @@ $countryResult = $countryState->getAllState();
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  
      <style type="text/css">
       body{
-        background-image: url(images/candidate_bg.jpg);
+        background-image: url(images/bhavan.jpg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -45,14 +45,14 @@ function getCity(val) {
     include "connect.php"; ?>
   <div class="container">
 
-    <p><b><center><h3>Select Particular Candidate</h3></center></b></p>
+    <p><b><center><h3>Checkout Older Year Results</h3></center></b></p>
   </div><br><br>
   
   <div class="middle container">
     <form class="form-inline">
       <div class="row">
         <div class="col-sm-4">
-          <label>Select Parties</label>
+          <label>Select Year</label>
           <select name="party" id="party" class="form-control" style="width: 100%" >
             <option value="select" hidden>Select</option>
             <?php 

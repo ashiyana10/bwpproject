@@ -38,7 +38,8 @@
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="email" name="email" class="form-control" placeholder="E-mail" style="width: 100%">
+					<input type="email" name="email" id="email" class="form-control" placeholder="E-mail" style="width: 100%">
+					<span id="email_error"></span>
 				</div>
 			</div><br>
 			Birth Date:<br>
@@ -116,7 +117,15 @@
 					<input type="file" name="file2" class="form-control" style="width: 100%" data-validation="required" data-validation-error-msg="Please Choose File">
 				</div>
 			</div><br>
-			
+			<div class="row">
+				<div class="col-sm-6">
+					<input type="text" name="otp">
+					<span id="otp_error"></span>
+				</div>
+				<div class="col-sm-6">
+					<button  type="button" class="btn btn-danger" onclick="send_otp()">Send OTP</button>
+				</div>
+			</div><br>
 			<div class="row">
 				<div class="col-sm-4">
 					<input type="submit" class="btn btn-primary form-control" style="width: 100%" name="submit" value="Submit">
@@ -131,5 +140,26 @@
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+function send_otp() {
+	 var email=document.getElementById('email').value;		
+		 
+		$.ajax({
+			url:'send_otp.php',
+			type:'POST',
+			data:'email='+email,
+			success:function(result){
+				if (result=='yss') 
+				{
+					document.write('valid');
+				}
+				if(result=='no')
+				{
+					document.write('invalid');
+				}
+			}
+		});
+	}	
+</script>
 </body>
 </html>

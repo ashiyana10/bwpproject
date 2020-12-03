@@ -19,23 +19,21 @@ include 'connect.php';
 
 
     <link href="css/docs.css" rel="stylesheet"><!--  template structure css -->
-
+    
     
     <!-- Used Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Domine:400,700%7COpen+Sans:300,300i,400,400i,600,600i,700,700i%7CRoboto:400,500" rel="stylesheet"> 
     <script type="text/javascript" src="js/search1.js"></script>
     <script type="text/javascript" src="js/search.js"></script>
      <link rel="stylesheet" type="text/css" href="search.css">
-     <link rel='stylesheet' href='css/sweet-alert.css'>
+     <link rel="stylesheet" href="css/sweet-alert.css">
         <script src="js/sweetalert.min.js"></script>
  <style type="text/css">
  	body{
  		color: black;
  	}
- 	.friends-block{
- 		background:url('images/fort.jpg');background-attachment: fixed;
- 	}
- 	.friends-block:after {position:absolute; top:0px; left:0px; width:100%; height:100%; background-color: orange;opacity: 0.9; content:""; }
+ 	.friends-block {display:block; width:100%; background:url(images/fort.jpg) no-repeat 50% 50%; background-size:cover; padding:33px 0 63px 0; background-attachment:fixed; position:relative;}
+.friends-block:after {position:absolute; top:0px; left:0px; width:100%; height:100%; background-color: orange;opacity: 0.9; content:""; }
  </style>
  <script type="text/javascript">
 msg="Hello world......";
