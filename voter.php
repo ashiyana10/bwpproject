@@ -23,8 +23,8 @@ try{
 	$pincode=$_GET['pincode'];
 	$state=$_GET['state'];
 	$city=$_GET['city'];
-	$img1 = $_FILES['file1']['name'];
-	$img2 = $_FILES['file2']['name'];
+	$img1=$_FILES['file1']['name'];
+	$img2=$_FILES['file2']['name'];
 
 	
 		$path1=move_uploaded_file($_FILES['img1']['tmp_name'],"upload/".$img1);

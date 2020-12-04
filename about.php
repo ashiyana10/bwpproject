@@ -15,7 +15,7 @@
 
 </head>
 <body background="images\flag.jpg" style="background-repeat: no-repeat;background-size: cover;background-attachment: fixed;">
-	<?php include "header.html"; ?>
+	<?php include "header.php"; ?>
 <div class="container"><br><br>
 	<div class="jumbotron opacity1">
 		<center> <h1>About Us</center><br><br>

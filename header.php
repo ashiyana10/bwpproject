@@ -7,7 +7,7 @@
 				<div class="nav_link">
 					<div class="col-md-1">
 						<div class="dropdown">
-							<b>Home</b>&nbsp;<b class="fas fa-angle-down"></b>
+							<a href="index.php" style="color: black"><b>Home</b>&nbsp;<b class="fas fa-angle-down"></b></a>
 							<div class="dropdown-content">
    								<a href="#">Link 1</a>
     							<a href="#">Link 2</a>
