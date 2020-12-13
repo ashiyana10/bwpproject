@@ -12,20 +12,26 @@
   border-left: 2px solid #5B5A58;
   height: 120px;
 }
+
+
+
  </style>
 </head>
 <body>
 <?php 
 session_start();
-include "header.php"; 
- 
-					 $aid=$_REQUEST['aid'];
-					 $pid=$_REQUEST['pid'];
+ include "header.php"; ?>
+<?php
+	if (isset($_SESSION['cid'])) {
+		$cid=$_SESSION['cid'];
+	}	
+	
+					 
 					 
                     include 'connect.php';
-                    $ans=$conn->prepare("select * from candidate where area_id=:aid AND party_id=:pid");
-                    $ans->bindParam(':aid',$aid);
-                    $ans->bindParam(':pid',$pid);
+                    $ans=$conn->prepare("select * from candidate where id=:cid");
+                    $ans->bindParam(':cid',$cid);
+                    
                     $ans->execute();
                     for($i=0;$i<$ans->rowCount();$i++)
                     {
@@ -71,8 +77,14 @@ include "header.php";
 			<h4><p><b><center>Position in Politics (Past & Present)</center></b></p><br>
 				<p><?php echo $row['position']; ?></p>
 		</div>
-
-	</div>
+	</div><br>
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+			<a href="edit_detail.php"><button style="width: 100%" class="btn btn-primary">Edit Detail</button></a>
+		</div>
+		<div class="col-sm-4"></div>
+	</div><br>
 </div>
 <?php
 }?>

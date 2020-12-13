@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use Phppot\StateCity;
 require_once __DIR__ . '/combobox/CountryState.php';
 $countryState = new StateCity();
@@ -138,5 +138,3 @@ function getCity(val) {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
   </body>  
 </html>  
-
- 

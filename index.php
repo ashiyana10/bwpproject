@@ -1,7 +1,8 @@
-
 <?php
 include 'connect.php';
-?><!DOCTYPE html>
+session_start();
+?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>E-voting</title>
@@ -35,28 +36,10 @@ include 'connect.php';
  	.friends-block {display:block; width:100%; background:url(images/fort.jpg) no-repeat 50% 50%; background-size:cover; padding:33px 0 63px 0; background-attachment:fixed; position:relative;}
 .friends-block:after {position:absolute; top:0px; left:0px; width:100%; height:100%; background-color: orange;opacity: 0.9; content:""; }
  </style>
- <script type="text/javascript">
-msg="Hello world......";
-pos=0;
-maxlength=msg.length+1;
-function writemsg()
-{
-	if(pos<maxlength)
-	{
-	txt=msg.substring(pos,0);
-	document.forms[0].msgtxt.value=txt;
-	pos++;
-	timer=setTimeout("writemsg()",400);
-	}
-}
-function stoptimer()
-{
-	clearTimeout(timer);
-}
-</script>
+ 
 </head>
 
-<body onload="writemsg()" onunload="stoptimer()">
+<body>
 
 <div class="main" style="background-color:#E5E4E2">
 
@@ -129,18 +112,19 @@ function stoptimer()
 			</div>
 		</div><br>
 		<div class="row">
+			<?php
+                    $ans=$conn->prepare("select * from parties limit 3");
+                    $ans->execute();
+                    for($i=0;$i<$ans->rowCount();$i++)
+                    {
+                        $row=$ans->fetch();
+                ?>
+		
 			<div class="col-sm-4">
-				<a href="candidat.php"><img src="images/bjp.png" width="410px" height="300px"></a><br/><br/>
-				<p><center><b>Bharatiya Janata Party(BJP)</b></center></p>
+				<a href="candidat.php"><img src="<?php echo $row['img']; ?>" width="410px" height="300px"></a><br/><br/>
+				<p><center><b><?php echo $row['party_name']; ?></b></center></p>
 			</div>
-			<div class="col-sm-4">
-				<a href="candidat.php"><img src="images/cong1.jpg" width="410px" height="300px"></a><br><br>
-				<p><center><b>Indian National Congress(INC)</b></center></p>
-			</div>
-			<div class="col-sm-4">
-					<a href="candidat.php"><img src="images/ncp.jpg" width="410px" height="300px"></a><br><br>
-					<p><center><b>Nationalist Congress Party(NCP)</b></center></p>
-			</div>
+			<?php } ?>	
 		</div><br>
 	</div>
 
@@ -214,18 +198,58 @@ function stoptimer()
  				<h4 class="modal-title"><center>Login</center></h4>
  			</div>
  			<div class="modal-body">
- 				<form class="form-inlne" role="form">
- 					<input type="text" class="form-control" name="id" placeholder="Enter id"><br>
+ 				<form class="form-inlne" role="form" action="login.php " method="POST" enctype="multipart/form-data">
+ 					<select class="form-control" name="actor">
+ 						<option hidden="true">select</option>
+ 						<option>Candidate</option>
+ 						<option>Voter</option>
+ 					</select><br>	
+ 					<input type="email" class="form-control" name="email" placeholder="E-mail"><br>
  					<input type="password" class="form-control" name="pwd" placeholder="Password">
+ 					<div class="modal-footer">
+ 						<input type="submit" name="login" value="Login" class="btn btn-primary">
+ 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+ 					</div>
  				</form>
  			</div>
- 			<div class="modal-footer">
- 				<button type="button" class="btn btn-primary" >Login</button>
- 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
- 			</div>
+ 			
  		</div>
  	</div>
 </div>
+
+
+
+<?php
+
+	 if(isset($_SESSION['login']))
+        {
+            $a=$_SESSION['login'];
+            if ($a==1) {
+                 ?>
+                 <script type="text/javascript">
+                         swal("Login Successfully....");
+                 </script>
+                 
+                 <?php
+                    
+                }
+                else if($a==2)
+                {                
+                    ?>
+                    <script type="text/javascript">
+                         swal("Login Unsuccessfully....");
+                 </script>
+                 <?php
+                 
+                
+                }
+        unset($_SESSION['login']);
+        }
+       
+	
+?>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
 

@@ -10,7 +10,7 @@ if (! empty($_POST["state_id"])) {
     $countryState = new StateCity();
     $stateResult = $countryState->getCityesByStateId($stateId);
     ?>
-<option value="">Select Cityes</option>
+<option value="" hidden="true">Select</option>
 <?php
     foreach ($stateResult as $city) {
         ?>
