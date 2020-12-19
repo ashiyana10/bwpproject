@@ -42,7 +42,8 @@ function getCity(val) {
   <body> 
   
     <?php include "header.php"; 
-    include "connect.php"; ?>
+    include "connect.php";
+    include "modal.php" ?>
   <div class="container">
 
     <p><b><center><h3>Select Particular Candidate</h3></center></b></p>
@@ -112,7 +113,7 @@ function getCity(val) {
   
 </div>  
  
-  </script>
+  
   <script type="text/javascript">
    function data(){
      var state = document.getElementById('state').value;

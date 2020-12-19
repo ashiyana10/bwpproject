@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,9 @@ session_start();
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>  
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+ 	
+
+ 	
  	<style type="text/css">
  		.opacity1{
  			opacity: 0.7;
@@ -18,7 +22,12 @@ session_start();
 
 </head>
 <body background="images\flag.jpg" style="background-repeat: no-repeat;background-size: cover;background-attachment: fixed;">
-	<?php include "header.php"; ?>
+	
+
+
+	<?php include "header.php";
+	include 'modal.php';
+	 ?>
 <div class="container"><br><br>
 	<div class="jumbotron opacity1">
 		<center> <h1>About Us</center><br><br>
@@ -53,5 +62,8 @@ session_start();
 		</ul></h4>
 	</div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+
 </body>
 </html>

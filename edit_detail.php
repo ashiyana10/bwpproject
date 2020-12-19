@@ -69,7 +69,8 @@ if (isset($_POST['submit']))
 	$ins->execute();
 	}
 
- include "header.php"; ?>
+ include "header.php";
+  ?>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
@@ -143,6 +144,7 @@ if (isset($_POST['submit']))
 </div>
 <?php
 }?>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
 </body>
 </html>

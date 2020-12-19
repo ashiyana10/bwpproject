@@ -2,9 +2,12 @@
 <?php
 session_start();
 use Phppot\StateCity;
+
 require_once __DIR__ . '/combobox/CountryState.php';
 $countryState = new StateCity();
+
 $countryResult = $countryState->getAllState();
+
 ?> 
 <!DOCTYPE html>
 <html>
@@ -21,6 +24,7 @@ $countryResult = $countryState->getAllState();
  		}
  	</style>
  	<script src="./combobox/jquery-3.2.1.min.js" type="text/javascript"></script>
+ 	<script src="js/sweetalert.min.js"></script>
  	 <script>
 function getCity(val) {
     $("#loader").show();
@@ -34,6 +38,26 @@ function getCity(val) {
   }
   });
 }
+
+function getArea(val){
+     
+     $("#loader").show();
+      $.ajax({
+        
+        type:"POST",
+        url:"./combobox/get-state-city-ep.php",
+        //data:{state:'state',city:'state_list'},
+        data:'city_id='+val,
+        success:function(data){
+          $("#area_list").html(data);
+          $("#loader").hide();
+        }
+
+      });
+    
+    }
+
+
 </script>
 </head>
 <body background="images\fort.jpg" style="background-repeat: no-repeat;background-size: cover;background-attachment: fixed;">
@@ -80,89 +104,50 @@ function getCity(val) {
 		{
 			?>
 			<script type="text/javascript">
-						alert("exists");
+						swal("Your Email Address Already Register");
 					</script>
 					<?php
 		}
 		else
 		{
-			if ($pwd==$cpwd) {
-				$insertquery=$conn->prepare("insert into voter(id,surname,middle_name,last_name,tel,email,dob,address,pincode,gender,state,city,img1,img2,pwd,re_pwd,token,status)  values(null,:sur_nm,:m_nm,:l_nm,:tel,:email,:date,:address,:pincode,:gender,:state,:city,:new1,:new2,:pwd,:cpwd,:token,:status)");
-				$insertquery->bindParam(':sur_nm',$sur_nm);
-				$insertquery->bindParam(':m_nm',$m_nm);
-				$insertquery->bindParam(':l_nm',$l_nm);
-				$insertquery->bindParam(':tel',$tel);
-				$insertquery->bindParam(':email',$email);
-				$insertquery->bindParam(':date',$date);
-				$insertquery->bindParam(':gender',$gender);
-				$insertquery->bindParam(':address',$address);
-				$insertquery->bindParam(':pincode',$pincode);
-				$insertquery->bindParam(':state',$state);
-				$insertquery->bindParam(':city',$city);
-				$insertquery->bindParam(':new1',$new1);
-				$insertquery->bindParam(':new2',$new2);
-				$insertquery->bindParam(':pwd',$pwd);
-				$insertquery->bindParam(':cpwd',$cpwd);
-				$insertquery->bindParam(':token',$token);
-				$insertquery->bindParam(':status',$status);
-				$insertquery->execute();
-				if ($insertquery) {
-					?>
-					<script type="text/javascript">
-						swal("insert");
-					</script>
-					<?php
-					/*$subject="Email Activation";
-					$body= "Hi, Click here too activate your account 
-					http://localhost/bwpproject/active.php?token=token ";
-					$sender_mail="From:ashiyanahalvadiya123@gmail.com";
-						require 'phpmailer/PHPMailerAutoload.php';
-						$mail= new PHPMailer;
-						$mail->Host='smtp.gmail.com';
-						$mail->Port=587;
-						$mail->isSMTP();
-						$mail->SMTPAuth=true;
-						$mail->SMTPSecure='tls';
-						$mail->Username='ashiyanahalvadiya123@gmail.com';//Your Email Address
-						$mail->Password='ashu10111';//Your Email Password
-						$mail->setFrom('ashiyanahalvadiya123@gmail.com','Notification');
-						$mail->addAddress('jagatvasveliya2000@gmail.com');//Receiver Email
-						$mail->addReplyTo('ashiyanahalvadiya123@gmail.com');
-						$mail->isHTML(true);
-						$mail->Subject='Sample Mail';
-						$mail->Body='<h1>Sample Mail</h1>'.'<a href="www.youtube.com">Youtube</a>';
-						if(!$mail->send())
-						{
-						echo "Something went wrong";
-						echo $mail->ErrorInfo;
-						}
-						else
-						{
-							echo "Email sent successfully";
-						}*/
-					/*if (mail($email, $subject, $body, $sender_mail)) {
-						session_start();
-						$_SESSION['msg']="Check your mail to activate your account $email";
-						?>
-						<?php
-						//header('location:apply.php');
+			if($pwd==$cpwd)
+			{
+				require 'phpmailer/PHPMailerAutoload.php';
+					$mail= new PHPMailer;
+					$mail->Host='smtp.gmail.com';
+					$mail->Port=587;
+					$mail->isSMTP();
+					$mail->SMTPAuth=true;
+					$mail->SMTPSecure='tls';
+					$mail->Username='ashiyanahalvadiya123@gmail.com';//Your Email Address
+					$mail->Password='ashu10111';//Your Email Password
+					$mail->setFrom('ashiyanahalvadiya123@gmail.com','Notification');
+					$mail->addAddress($email);//Receiver Email
+					$mail->addReplyTo('ashiyanahalvadiya123@gmail.com');
+					$mail->isHTML(true);
+					$mail->Subject='Verify Your Email Address';
+					
+					$mail->Body='<a href="localhost/bwpproject/verify_voter.php?sur_nm=$sur_nm&m_nm=$m_nm&l_nm=$l_nm&tel=$tel&email=$email&date=$date&gender=$gender&address=$address&pincode=$pincode&state=$state&city=$city&new1=$new1&new2=$new2&pwd=$pwd&cpwd=$cpwd"><h1>Click on the link to verify ur email...</h1></a>';
+					if(!$mail->send())
+					{
+					echo "Something went wrong";
+					echo $mail->ErrorInfo;
 					}
-					else{
-						echo "Email Sending Failed.....";
-					}*/
-				}
-				else
-				{
-					?>
-					<script>
-						alert("not insert successfully....");
-					</script>
-					<?php
-				}
-
+					else
+					{
+						?>
+						<script type="text/javascript">
+							swal('check your mail');
+						</script>
+						<?php
+					}
 			}
 			else{
-				echo "pwd not matched";
+				?>
+				<script type="text/javascript">
+					swal('password does not match')
+				</script>
+				<?php
 			}
 			
 		}
@@ -180,7 +165,8 @@ function getCity(val) {
 
 
 
-	<?php include "header.php"; ?>
+	<?php include "header.php";
+	include "modal.php"; ?>
 <div class="container"><br><br>
 	<div class="jumbotron opacity1">
 		<center> <h3>Apply For Voter Or Candidate</center><br><br>
@@ -238,12 +224,12 @@ function getCity(val) {
 			Current State:<br>
 			<div class="row">
 				<div class="col-sm-12">
-					<select class="form-control" name="state" style="width: 100%" onChange="getCity(this.value);">
+					<select class="form-control" name="state" id="state" style="width: 100%" onChange="getCity(this.value);">
 						<option hidden="">Select</option>
 						<?php
             				foreach ($countryResult as $country) {
             			?>    
-            				<option value="<?php echo $country["id"]; ?>"><?php echo $country["state_name"]; ?></option>
+           				<option value="<?php echo $country["id"]; ?>"><?php echo $country["state_name"]; ?></option>
             			<?php
             				}
             			?>
@@ -253,9 +239,18 @@ function getCity(val) {
 			Current City:<br>
 			<div class="row">
 				<div class="col-sm-12">
-					<select class="form-control" id="state_list" name="city" style="width: 100%">
+					<select class="form-control" id="state_list" name="city" style="width: 100%" onChange="getArea(this.value);">
 						<option hidden="">Select</option>
 						
+					</select>
+				</div>
+			</div><br>
+
+			 Current Area:<br>
+			<div class="row">
+				<div class="col-sm-12">
+					<select class="form-control" id="area_list"  name="area" style="width: 100%">
+						<option hidden="">Select</option>
 					</select>
 				</div>
 			</div><br>
@@ -282,12 +277,12 @@ function getCity(val) {
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="password" name="pwd" class="form-control" style="width: 100%">
+					<input type="password" name="pwd" class="form-control" style="width: 100%" placeholder="Password">
 				</div>				
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="password" name="cpwd" class="form-control" style="width: 100%">
+					<input type="password" name="cpwd" class="form-control" style="width: 100%" placeholder="Re-Type Password">
 				</div>				
 			</div><br>
 			<div class="row">
@@ -302,8 +297,15 @@ function getCity(val) {
 				</div>
 			</div>
 		</form>
+		
 	</div>
 </div>
+<script type="text/javascript">
+   
+  </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+    
 
 </body>
 </html>

@@ -16,13 +16,16 @@
 </head>
 <body>
 <?php 
-session_start();
+
 include "header.php"; 
- 
+include "modal.php";
+include 'connect.php';
+
+ session_start();
 					 $aid=$_REQUEST['aid'];
 					 $pid=$_REQUEST['pid'];
 					 
-                    include 'connect.php';
+                    
                     $ans=$conn->prepare("select * from candidate where area_id=:aid AND party_id=:pid");
                     $ans->bindParam(':aid',$aid);
                     $ans->bindParam(':pid',$pid);
@@ -76,5 +79,7 @@ include "header.php";
 </div>
 <?php
 }?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
 </body>
 </html>

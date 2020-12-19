@@ -1,6 +1,30 @@
 <?php
 include 'connect.php';
+
 session_start();
+if (isset($_SESSION['vid'])) {
+    $vid=$_SESSION['vid'];
+}
+
+                    $ans=$conn->prepare("select * from voter where id=:vid");
+                    $ans->bindParam(':vid',$vid);
+                    $ans->execute();
+                    for($i=0;$i<$ans->rowCount();$i++)
+                    {
+                        $row=$ans->fetch();
+                        $aid=$row['area'];
+                    }
+                    $ans=$conn->prepare("select * from area where id=:aid");
+                    $ans->bindParam(':aid',$aid);
+                    $ans->execute();
+                    for($i=0;$i<$ans->rowCount();$i++)
+                    {
+                        $row=$ans->fetch();
+                        $sid=$row['state_id'];
+                    }
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,35 +72,56 @@ session_start();
 	
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
  			
-	 			<ol class="carousel-indicators">
+	 			<!--<ol class="carousel-indicators">
  					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
  					<li data-target="#myCarousel" data-slide-to="1"></li>
  					<li data-target="#myCarousel" data-slide-to="2"></li>
- 				</ol>
+ 				</ol>-->
  				<!-- Wrapper for slides -->
  				<div class="carousel-inner" >
- 					<div class="item active" style="background-image: url('images/pm_pics.png');">
- 	 					<?php include 'header.php'; ?>
- 	 					<p style="padding: 200px;font-size: 30px;color: blue" ><b>Voting For the 2020-21 link available here....</b></p>
- 					</div>
- 					<div class="item" style="background-image: url('images/pm_pics.png');">
-		 				<?php include 'header.php'; ?> 
-		  				<p style="padding: 200px;font-size: 30px;color: green"><b>Show the Results of the current year after<br> the election 5 hour...</b></p>
- 					</div>
- 					<div class="item" style="background-image: url('images/pm2.jpg');background-repeat: no-repeat;">
- 		 				<?php include 'header.php'; ?>
- 		  				<p style="padding: 200px;font-size: 30px" >Election 2020-2021</p>
- 					</div>
+                    <?php
+                    $ans=$conn->prepare("select * from slider");
+                    $ans->execute();
+                    for($i=0;$i<$ans->rowCount();$i++)
+                    {
+                        include 'modal.php';
+                        $row=$ans->fetch();
+                        ?>
+
+         					<div class="item active" style="background-image: url('<?php echo $row['img'] ?>');">
+         	 					<?php include 'header.php'; ?>
+                                <div class="row" style="padding: 150px;padding-bottom: 20px">
+                                    <div class="col-sm-9">
+         	 					        <p style="font-size: 32px;color: blue" ><b><?php echo $row['detail']; ?></b><br>
+                                        <button class="btn btn-danger" style="font-size: 24px" onclick="vote()">Give Vote</button></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered text-center" style="border-radius: 0.9em; background-color: white; margin-left: 150px;margin-bottom:50px;border-width: 2px;width: 80%">  
+                                            <thead >
+                                              
+                                            </thead>
+                                                <tbody id="response" style="font-size: 16px;">
+                                                
+                                                </tbody>
+                                        </table> 
+                                    </div>
+                                </div>
+         					</div>
+                         <?php
+                                                
+                }?>
  				</div>
  				<!-- Left and right controls -->
- 					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+ 					<!--<a class="left carousel-control" href="#myCarousel" data-slide="prev">
  						<span class="glyphicon glyphicon-chevron-left"></span>
  						<span class="sr-only">Previous</span>
  					</a>
  					<a class="right carousel-control" href="#myCarousel" data-slide="next">
  						<span class="glyphicon glyphicon-chevron-right"></span>
  						<span class="sr-only">Next</span>
- 					</a>
+ 					</a>-->
 			</div>
 	</div><br><br>
 
@@ -108,7 +153,7 @@ session_start();
 				 <center><p style="margin-top: 15px;"><b><h3 style="margin-left: 200px">Political Parties</h3></b></p></center>
 			</div>
 			<div class="col-sm-2">
-				<button class="btn btn-success" style="margin-top: 15px;background-color:#2B3856">&nbsp;&nbsp;<b style="font-size: 18px">Show All</b>&nbsp;&nbsp;</button>
+				<a href="candidat.php"><button class="btn btn-success" style="margin-top: 15px;background-color:#2B3856">&nbsp;&nbsp;<b style="font-size: 18px">Show All</b>&nbsp;&nbsp;</button></a>
 			</div>
 		</div><br>
 		<div class="row">
@@ -121,7 +166,7 @@ session_start();
                 ?>
 		
 			<div class="col-sm-4">
-				<a href="candidat.php"><img src="<?php echo $row['img']; ?>" width="410px" height="300px"></a><br/><br/>
+				<a href="candidat.php"><img src="<?php echo $row['img']; ?>" width="400px" height="300px"></a><br/><br/>
 				<p><center><b><?php echo $row['party_name']; ?></b></center></p>
 			</div>
 			<?php } ?>	
@@ -131,7 +176,7 @@ session_start();
 
 
 
-	<div class="container-fluid result" id="Results" style="background-color:white;margin: 20px;margin-top: 0px">
+	<div class="container-fluid result" id="Results" style="background-color:;margin: 20px;margin-top: 0px">
 		<div class="row" style="height:300px;width:1310px;background-image: url('images/flag2_new.jpg');background-size: cover;">
 			<div class="col-sm-12">
 				<h2><p style="padding: 90px">Results for the older year will be checkout here area wise</p></h2>
@@ -188,39 +233,20 @@ session_start();
 	
 </div>
 
-<div id="loginModal" class="modal fade" role="dialog" >
-
- 	<div class="modal-dialog">
- 		<!-- Modal content-->
- 		<div class="modal-content">
- 			<div class="modal-header">
- 				<button type="button" class="close" data-dismiss="modal">&times;</button>
- 				<h4 class="modal-title"><center>Login</center></h4>
- 			</div>
- 			<div class="modal-body">
- 				<form class="form-inlne" role="form" action="login.php " method="POST" enctype="multipart/form-data">
- 					<select class="form-control" name="actor">
- 						<option hidden="true">select</option>
- 						<option>Candidate</option>
- 						<option>Voter</option>
- 					</select><br>	
- 					<input type="email" class="form-control" name="email" placeholder="E-mail"><br>
- 					<input type="password" class="form-control" name="pwd" placeholder="Password">
- 					<div class="modal-footer">
- 						<input type="submit" name="login" value="Login" class="btn btn-primary">
- 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
- 					</div>
- 				</form>
- 			</div>
- 			
- 		</div>
- 	</div>
-</div>
 
 
 
 <?php
-
+    
+        if (isset($_SESSION['login_first'])) {
+            ?>
+                 <script type="text/javascript">
+                         swal("First u login....");
+                 </script>
+                 
+                 <?php
+                 unset($_SESSION['login_first']);
+        }
 	 if(isset($_SESSION['login']))
         {
             $a=$_SESSION['login'];
@@ -245,10 +271,54 @@ session_start();
                 }
         unset($_SESSION['login']);
         }
+
+
+
+         if(isset($_SESSION['reg_voter']))
+        {
+            $a=$_SESSION['reg_voter'];
+            if ($a==1) {
+                 ?>
+                 <script type="text/javascript">
+                         swal("Registation  Successfully....");
+                 </script>
+                 
+                 <?php
+                    
+                }
+                else if($a==2)
+                {                
+                    ?>
+                    <script type="text/javascript">
+                         swal("Registation Unsuccessfully....");
+                 </script>
+                 <?php
+                 
+                
+                }
+        unset($_SESSION['reg_voter']);
+        }
        
 	
 ?>
+<script type="text/javascript">
+   function vote(){
+     
+       
+      $.ajax({
+        url:"current_vote.php",
+        type:"POST",
 
+        //data:{state:'state',city:'state_list'},
+        
+        success:function(response){
+          $("#response").html(response);
+        }
+
+      });
+    
+    }
+  </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
