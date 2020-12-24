@@ -8,7 +8,7 @@ $countryResult = $countryState->getAllState();
 <!DOCTYPE html>  
 <html lang="en">  
   <head>  
-     <title>Candidate Detail</title>  
+     <title>Result Detail</title>  
      <link rel="stylesheet" type="text/css" href="index.css">
      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> 
@@ -37,6 +37,18 @@ function getCity(val) {
   }
   });
 }
+function getArea(val) {
+    $("#loader").show();
+  $.ajax({
+  type: "POST",
+  url: "./combobox/get-state-city-ep.php",
+  data:'city_id='+val,
+  success: function(data){
+    $("#area").html(data);
+    $("#loader").hide();
+  }
+  });
+}
 </script>
   </head>  
   <body> 
@@ -51,12 +63,12 @@ function getCity(val) {
   <div class="middle container">
     <form class="form-inline">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <label>Select Year</label>
-          <select name="party" id="party" class="form-control" style="width: 100%" >
+          <select name="year" id="year" class="form-control" style="width: 100%" >
             <option value="select" hidden>Select</option>
             <?php 
-            $ans=$conn->prepare("select * from Parties");
+            $ans=$conn->prepare("select * from years");
                     $ans->execute();
                     for($i=0;$i<$ans->rowCount();$i++)
                     {
@@ -65,7 +77,7 @@ function getCity(val) {
             <option value="<?php echo $row[1]; ?>"><?php echo $row[1]; ?></option><?php } ?>
             </select>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <label>Select States</label>
           <select id="state" class="form-control" style="width: 100%" onChange="getCity(this.value);" >
             <option value="select" hidden>Select</option>
@@ -77,14 +89,28 @@ function getCity(val) {
             }
             ?></select>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <label>Select Cityes</label>
-          <select id="state_list" class="form-control city" style="width: 100%">
+          <select id="state_list" class="form-control city" style="width: 100%" onChange="getArea(this.value);">
             <option value="select" hidden>Select</option>
-           
+            <?php
+			foreach ($cityResult as $area) {
+			?>
+				<option value="<?php echo $area["id"]; ?>"><?php echo $area["area_name"]; ?></option>
+            <?php
+            }
+            ?>
           </select>
         </div>
-      </div><br>
+      
+	  <div class="col-sm-3">
+          <label>Select Area</label>
+          <select id="area" class="form-control" style="width: 100%">
+            <option value="select" hidden>Select</option>
+        
+          </select>
+        </div>
+		</div><br>
         
     </form>
     <div class="row">
@@ -99,7 +125,7 @@ function getCity(val) {
   
 
 <div class="container">  
-  <h4><b>Choose Area</b></h4>  <br>
+  <h4><b>Details</b></h4>  <br>
   
 <table class="table  table-bordered text-center" style="border-color: black" >  
     <thead>
@@ -115,16 +141,16 @@ function getCity(val) {
   </script>
   <script type="text/javascript">
    function data(){
-     var state = document.getElementById('state').value;
-     var city = document.getElementById('state_list').value;
-     var party = document.getElementById('party').value;
+     
+     var year = document.getElementById('year').value;
+     var area = document.getElementById('area').value;
        
       $.ajax({
-        url:"candidate_search.php",
+        url:"find_result.php",
         type:"POST",
 
         //data:{state:'state',city:'state_list'},
-        data:{state:state,city:city,party:party},
+        data:{year:year,area:area},
         success:function(response){
           $("#response").html(response);
         }
