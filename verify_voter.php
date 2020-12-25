@@ -12,12 +12,13 @@ session_start();
 		$pincode=$_REQUEST['pincode'];
 		$state=$_REQUEST['state'];
 		$city=$_REQUEST['city'];
+		$area=$_REQUEST['area'];
 		$new1=$_REQUEST['new1'];
 		$new2=$_REQUEST['new2'];
 		$pwd=$_REQUEST['pwd'];
 		$cpwd=$_REQUEST['cpwd'];
 		$status='inactive';
-				$insertquery=$conn->prepare("insert into voter(id,surname,middle_name,last_name,tel,email,dob,address,pincode,gender,state,city,img1,img2,pwd,re_pwd,status)  values(null,:sur_nm,:m_nm,:l_nm,:tel,:email,:date,:address,:pincode,:gender,:state,:city,:new1,:new2,:pwd,:cpwd,:status)");
+				$insertquery=$conn->prepare("insert into voter(id,surname,middle_name,last_name,tel,email,dob,address,pincode,gender,state,city,area,img1,img2,pwd,re_pwd,status)  values(null,:sur_nm,:m_nm,:l_nm,:tel,:email,:date,:address,:pincode,:gender,:state,:city,:area,:new1,:new2,:pwd,:cpwd,:status)");
 				$insertquery->bindParam(':sur_nm',$sur_nm);
 				$insertquery->bindParam(':m_nm',$m_nm);
 				$insertquery->bindParam(':l_nm',$l_nm);
@@ -29,6 +30,7 @@ session_start();
 				$insertquery->bindParam(':pincode',$pincode);
 				$insertquery->bindParam(':state',$state);
 				$insertquery->bindParam(':city',$city);
+				$insertquery->bindParam(':area',$area);
 				$insertquery->bindParam(':new1',$new1);
 				$insertquery->bindParam(':new2',$new2);
 				$insertquery->bindParam(':pwd',$pwd);
@@ -45,3 +47,4 @@ session_start();
 					header('location:index.php');
 				}
 			
+?>

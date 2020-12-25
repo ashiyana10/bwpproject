@@ -77,6 +77,7 @@ function getArea(val){
 		$pincode=$_POST['pincode'];
 		$state=$_POST['state'];
 		$city=$_POST['city'];
+		$area=$_POST['area'];
 		$img1=$_FILES['file1']['name'];
 		$img2=$_FILES['file2']['name'];
 		$pwd=$_POST['pwd'];
@@ -127,7 +128,7 @@ function getArea(val){
 					$mail->isHTML(true);
 					$mail->Subject='Verify Your Email Address';
 					
-					$mail->Body='<a href="localhost/bwpproject/verify_voter.php?sur_nm=$sur_nm&m_nm=$m_nm&l_nm=$l_nm&tel=$tel&email=$email&date=$date&gender=$gender&address=$address&pincode=$pincode&state=$state&city=$city&new1=$new1&new2=$new2&pwd=$pwd&cpwd=$cpwd"><h1>Click on the link to verify ur email...</h1></a>';
+					$mail->Body='<a href="localhost/bwpproject/verify_voter.php?sur_nm='.$sur_nm.'&m_nm='. $m_nm .'&l_nm='. $l_nm .'&tel='. $tel .'&email='. $email .'&date='. $date .'&gender='. $gender .'&address='. $address .'&pincode='. $pincode .'&state='. $state .'&city='. $city .'&area='. $area .'&new1='. $new1 .'&new2='. $new2 .'&pwd='. $pwd .'&cpwd='. $cpwd .'"><h1>Click on the link to verify ur email...</h1></a>';
 					if(!$mail->send())
 					{
 					echo "Something went wrong";
@@ -173,30 +174,30 @@ function getArea(val){
 		<form class="form-inline" role="form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-sm-4">
-					<input type="text" name="sur_nm" class="form-control" placeholder="Surname" style="width: 100%">
+					<input type="text" name="sur_nm" class="form-control" placeholder="Surname" style="width: 100%" required/>
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="m_nm" class="form-control" placeholder="Middle Name" style="width: 100%">
+					<input type="text" name="m_nm" class="form-control" placeholder="Middle Name" style="width: 100%" required/>
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="l_nm" class="form-control" placeholder="Last Name" style="width: 100%">
+					<input type="text" name="l_nm" class="form-control" placeholder="Last Name" style="width: 100%" required/>
 				</div>
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="tel" name="tel" class="form-control" placeholder="Contact No" style="width: 100%" max="10">
+					<input type="tel" name="tel" class="form-control" placeholder="Contact No" style="width: 100%" max="10"  required/>
 				</div>
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="email" name="email" id="email" class="form-control" placeholder="E-mail" style="width: 100%">
-					<span id="email_error"></span>
+					<input type="email" name="email" id="email" class="form-control" placeholder="E-mail" style="width: 100%" required/>
+					
 				</div>
 			</div><br>
 			Birth Date:<br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="date" name="date" class="form-control" placeholder="E-mail" style="width: 100%">
+					<input type="date" name="date" class="form-control" placeholder="E-mail" style="width: 100%" required/>
 				</div>
 			</div><br>
 			Gender:<br>
@@ -210,26 +211,26 @@ function getArea(val){
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<textarea  rows="3" style="width: 100%" name="address" class="form-control" placeholder="Current Address">
+					<textarea  rows="3" style="width: 100%" name="address" class="form-control" placeholder="Current Address" required/>
 						
 					</textarea>
 				</div>
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="text" name="pincode" class="form-control" placeholder="Pin Code" style="width: 100%">
+					<input type="text" name="pincode" class="form-control" placeholder="Pin Code" style="width: 100%" required/>
 				</div>
 			</div><br>
 			
 			Current State:<br>
 			<div class="row">
 				<div class="col-sm-12">
-					<select class="form-control" name="state" id="state" style="width: 100%" onChange="getCity(this.value);">
+					<select class="form-control" name="state" id="state" style="width: 100%" onChange="getCity(this.value);" required>
 						<option hidden="">Select</option>
 						<?php
             				foreach ($countryResult as $country) {
             			?>    
-           				<option value="<?php echo $country["id"]; ?>"><?php echo $country["state_name"]; ?></option>
+           				<option value="<?php echo $country["id"]; ?>"><?php echo $country["state_name"]; ?></option >
             			<?php
             				}
             			?>
@@ -239,7 +240,7 @@ function getArea(val){
 			Current City:<br>
 			<div class="row">
 				<div class="col-sm-12">
-					<select class="form-control" id="state_list" name="city" style="width: 100%" onChange="getArea(this.value);">
+					<select class="form-control" id="state_list" name="city" style="width: 100%" onChange="getArea(this.value);" required>
 						<option hidden="">Select</option>
 						
 					</select>
@@ -249,14 +250,14 @@ function getArea(val){
 			 Current Area:<br>
 			<div class="row">
 				<div class="col-sm-12">
-					<select class="form-control" id="area_list"  name="area" style="width: 100%">
+					<select class="form-control" id="area_list"  name="area" style="width: 100%" required>
 						<option hidden="">Select</option>
 					</select>
 				</div>
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<select class="form-control" style="width: 100%">
+					<select class="form-control" style="width: 100%" required/>
 						<option>Urban</option>
 						<option>Rubal</option>
 					</select>
@@ -266,23 +267,23 @@ function getArea(val){
 			Front Page:
 			<div class="row">
 				<div class="col-sm-12">	
-					<input type="file" name="file1" class="form-control" style="width: 100%" data-validation="required" data-validation-error-msg="Please Choose File">
+					<input type="file" name="file1" class="form-control" style="width: 100%" data-validation="required" data-validation-error-msg="Please Choose File" required/>
 				</div>
 			</div><br>
 			Back Page:
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="file" name="file2" class="form-control" style="width: 100%" data-validation="required" data-validation-error-msg="Please Choose File">
+					<input type="file" name="file2" class="form-control" style="width: 100%" data-validation="required" data-validation-error-msg="Please Choose File" required/>
 				</div>
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="password" name="pwd" class="form-control" style="width: 100%" placeholder="Password">
+					<input type="password" name="pwd" class="form-control" style="width: 100%" placeholder="Password" required/>
 				</div>				
 			</div><br>
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="password" name="cpwd" class="form-control" style="width: 100%" placeholder="Re-Type Password">
+					<input type="password" name="cpwd" class="form-control" style="width: 100%" placeholder="Re-Type Password" required/>
 				</div>				
 			</div><br>
 			<div class="row">

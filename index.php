@@ -237,16 +237,79 @@ if (isset($_SESSION['vid'])) {
 
 
 <?php
-    
-        if (isset($_SESSION['login_first'])) {
+        
+                  if (isset($_REQUEST['login_first'])) {
+              ?>
+                   <script type="text/javascript">
+                           
+                            swal({
+                                  text: "First U Login...",
+                                  
+                                  }).then(function() {
+                                  // Redirect the user
+                                  window.location.href = "index.php";
+                                  //console.log('The Ok Button was clicked.');
+                                  });
+                   </script>
+                   
+                 <?php
+                 
+        }
+        if (isset($_REQUEST['active_status'])) {
             ?>
                  <script type="text/javascript">
-                         swal("First u login....");
+                         
+                         swal({
+                                text: "Your Account Not Verified at Admin Site....",
+                                
+                                }).then(function() {
+                                // Redirect the user
+                                window.location.href = "index.php";
+                                //console.log('The Ok Button was clicked.');
+                                });
                  </script>
                  
                  <?php
-                 unset($_SESSION['login_first']);
+                 
         }
+        if (isset($_REQUEST['valid_state'])) {
+            $snm=$_REQUEST['snm'];
+            ?>
+
+                 <script type="text/javascript">
+
+                          swal({
+                                text: "You Are Not Belong to That State",
+                                
+                                }).then(function() {
+                                // Redirect the user
+                                window.location.href = "index.php";
+                                //console.log('The Ok Button was clicked.');
+                                });
+                 </script>
+                 
+                 <?php
+                 
+        }
+
+
+if(isset($_SESSION['already_vote']))
+        {
+            
+                 ?>
+                 <script type="text/javascript">
+                         swal("Already You Give a Vote....");
+                 </script>
+                 
+                 <?php
+          unset($_SESSION['already_vote']);
+          }
+
+        
+
+
+
+
 	 if(isset($_SESSION['login']))
         {
             $a=$_SESSION['login'];
